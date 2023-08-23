@@ -53,6 +53,9 @@ PStatus deletePatientWID(u64 ID);
 //returns a NULL if the patient wasn't found
 patient* checkWID(u64 ID);
 
+//function alias for checkWID for clarity
+#define editPatient(ID) checkWID(ID)
+
 //func to find the address of the obj X located before obj Y in the list using obj Y's ID and return a pointer to obj X
 patient* findPrevious(u64 ID);
 

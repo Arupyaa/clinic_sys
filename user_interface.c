@@ -146,9 +146,12 @@ void adminMode()
 			
 			printf("Enter new patient ID: ");
 			scanf("%llu",&i_ID);
+			while((getchar()) != '\n');
 			
 			printf("Enter new patient's gender in all small letters: ");
 			scanf("%s",i_genderN);
+			while((getchar()) != '\n');
+			
 			if(cmpS(i_genderN,"male"))
 				i_gender = MALE;
 			else if(cmpS(i_genderN,"female"))
@@ -156,6 +159,7 @@ void adminMode()
 			
 			printf("Enter new patient age: ");
 			scanf("%u",&i_age);
+			while((getchar()) != '\n');
 			
 			if(insertPatientTop(i_ID ,i_name ,i_gender ,i_age)== P_FAILED)
 			{
@@ -164,6 +168,7 @@ void adminMode()
 			break;
 			
 			case 2:
+			editWindow();
 			break;
 			
 			case 3:
@@ -180,7 +185,91 @@ void adminMode()
 	}
 }
 
+void editWindow()
+{
+	printf("Enter patient's ID you wish to edit: ");
+	u64 i_ID;
+	scanf("%llu",&i_ID);
+	while((getchar()) != '\n');
+	
+	patient* curr_patient = editPatient(i_ID);
+	if(curr_patient == NULL)
+	{
+		printf("This ID doesn't exist in the database\n");
+		return;
+	}
+		
+	while(1)
+	{
+		
+		
+		printf("Choose patient parameter to edit: \n");
+		printf("1: edit patient name\n");
+		printf("2: edit patient ID\n");
+		printf("3: edit patient gender\n");
+		printf("4: edit patient age\n");
+		printf("5: delete patient from records\n");
+		printf("6: exit editing this patient\n");
+		
+		u8 uChoice;
+		scanf("%u",&uChoice);
+		while((getchar()) != '\n');
+		
+		u8 i_genderN[10];
+		if(uChoice == 6)
+			return;
+		
+		printf("Enter new parameter: ");
+		switch(uChoice)
+		{
+			case 1:
+			gets(curr_patient->Name);
+			break;
+			
+			case 2:
+			scanf("%llu",&curr_patient->ID);
+			while((getchar()) != '\n');
+			break;
+			
+			case 3:
+			scanf("%s",i_genderN);
+			while((getchar()) != '\n');
+			if(cmpS(i_genderN,"male"))
+				curr_patient->Gender = MALE;
+			else if(cmpS(i_genderN,"female"))
+				curr_patient->Gender = FEMALE;
+			break;
+			
+			case 4:
+			scanf("%u",&curr_patient->Age);
+			while((getchar()) != '\n');
+			break;
+			
+			case 5:
+			if(deletePatientWID(curr_patient->ID) == P_SUCCESS)
+				printf("Patient deleted successfully from the system\n");
+			else
+				printf("Could not delete the patient from the system\n");
+			return;
+			
+			
+		}
+	}
+	
+}
+
+
 void patientMode()
 {
 	
 }
+
+/*changes to be made:
+remove delete patient func from admin options 
+move add code to its own window func
+add print curr_patient feedback window to editing window
+
+
+changes done:
+add edit window and include delete patient under it
+*/
