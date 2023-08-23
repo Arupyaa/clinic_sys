@@ -288,7 +288,44 @@ void editWindow()
 
 void patientMode()
 {
-	
+	while(1)
+	{
+		printf("Enter 1 to view patient's records using his ID\n");
+		printf("Enter 2 to view all reservations for today\n");
+		printf("Enter 3 to exit user mode\n");
+		printf("Input: ");
+		
+		u8 pChoice;
+		scanf("%d",&pChoice);
+		while((getchar()) != '\n');
+		
+		u64 i_ID;
+		switch(pChoice)
+		{
+			case 1:
+			i_ID = 0;
+			printf("Enter ID of desired patient to view records: ");
+			scanf("%llu",&i_ID);
+			while((getchar()) != '\n');
+			
+			patient* curr = checkWID(i_ID);
+			if(curr == NULL)
+				printf("Patient of such ID doesn't exist in the system\n");
+			else
+			{
+				printf("Name\tAge\tGender\tID\n");
+				printf("%s\t%d\t%s\t%llu\n",curr->Name,curr->Age,Gender(curr->Gender),curr->ID);
+			}
+			break;
+			
+			case 2:
+			printAllslots();
+			printf("\n");
+			break;
+			case 3:
+			return;
+		}
+	}
 }
 
 /*changes to be made:
