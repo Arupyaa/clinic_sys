@@ -130,10 +130,9 @@ void adminMode()
 		printf("Please enter a number for an operation:\n");
 		printf("1:Add new patient record\n");
 		printf("2:Edit an existing patient record\n");
-		printf("3:Delete an existing patient record\n");
-		printf("4:Reserve a new appointment slot with the doctor\n");
-		printf("5:Cancel an existing appointment with the doctor\n");
-		printf("6:Logout of Admin mode\n");
+		printf("3:Reserve a new appointment slot with the doctor\n");
+		printf("4:Cancel an existing appointment with the doctor\n");
+		printf("5:Logout of Admin mode\n");
 		scanf("%d",&n);
 		while((getchar()) != '\n');
 		
@@ -176,8 +175,6 @@ void adminMode()
 			case 4:
 			break;
 			case 5:
-			break;
-			case 6:
 			return;
 			break;
 		}
