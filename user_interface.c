@@ -189,7 +189,20 @@ void adminMode()
 				printf("Couldn't make reservation\n");
 			
 			break;
+			
 			case 4:
+			printAllslots();
+			printf("Enter patient's ID you wish to cancel his reservation: ");
+			i_ID =0;
+			
+			scanf("%llu",&i_ID);
+			while((getchar()) != '\n');
+			
+			if(cancelSlotWID(i_ID) ==R_FAILED)
+				printf("Couldn't cancel such a reservation\n");
+			else
+				printf("Reservation cancelled successfully\n");
+			
 			break;
 			case 5:
 			return;
