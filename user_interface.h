@@ -1,6 +1,7 @@
 #ifndef USER_INTERFACE_H
 #define USER_INTERFACE_H
 #include "patients_list.h"
+#include "reservations.h"
 
 #define PASSWORD "1234"
 

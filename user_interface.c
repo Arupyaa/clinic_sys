@@ -171,6 +171,23 @@ void adminMode()
 			break;
 			
 			case 3:
+			printAvailableSlots();
+			printf("Desired timeslot number: ");
+			
+			Slots i_slot;
+			scanf("%u",&i_slot);
+			while((getchar()) != '\n');
+			
+			
+			printf("please enter the patient's ID for the reservation: ");
+			i_ID = 0;
+			
+			scanf("%llu",&i_ID);
+			while((getchar()) != '\n');
+			
+			if(reserveSlot(i_slot,i_ID) == R_FAILED)
+				printf("Couldn't make reservation\n");
+			
 			break;
 			case 4:
 			break;

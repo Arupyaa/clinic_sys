@@ -48,7 +48,7 @@ void printAvailableSlots()
 			printf("\n");
 		}
 	}
-	printf("\n");
+	//printf("\n");
 }
 
 void printSlot(Slots slot)
