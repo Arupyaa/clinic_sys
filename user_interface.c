@@ -4,6 +4,8 @@ void mainWindow()
 {
 	while(1)
 	{
+		printf("entered beginning of while loop\n");
+		
 		UserModes USER_STATUS = NONE;
 	
 		printf("Welcome to the clinic\nPlease choose between Admin Mode or User Mode:\n");
@@ -121,12 +123,7 @@ void adminMode()
 	while(1)
 	{
 		u8 n;
-		u64 i_ID;
 		
-		
-		Gend i_gender =MALE;
-		u8 i_genderN[10];
-		u8 i_age;
 		printf("Please enter a number for an operation:\n");
 		printf("1:Add new patient record\n");
 		printf("2:Edit an existing patient record\n");
@@ -137,34 +134,11 @@ void adminMode()
 		scanf("%d",&n);
 		while((getchar()) != '\n');
 		
-		u8* i_name = (u8*)malloc(sizeof(u8)*100);
+		
 		switch(n)
 		{
 			case 1:
-			printf("Enter new patient Name: ");
-			gets(i_name);
-			
-			printf("Enter new patient ID: ");
-			scanf("%llu",&i_ID);
-			while((getchar()) != '\n');
-			
-			printf("Enter new patient's gender in all small letters: ");
-			scanf("%s",i_genderN);
-			while((getchar()) != '\n');
-			
-			if(cmpS(i_genderN,"male"))
-				i_gender = MALE;
-			else if(cmpS(i_genderN,"female"))
-				i_gender = FEMALE;
-			
-			printf("Enter new patient age: ");
-			scanf("%u",&i_age);
-			while((getchar()) != '\n');
-			
-			if(insertPatientTop(i_ID ,i_name ,i_gender ,i_age)== P_FAILED)
-			{
-				printf("A patient with this ID already exists, could not add the new patient record\n");
-			}
+			addPatient();
 			break;
 			
 			case 2:
@@ -182,8 +156,46 @@ void adminMode()
 			break;
 		}
 		
+		printf("exited successfully from switch\n");
+		
 	}
 }
+
+void addPatient()
+{
+	u64 i_ID;
+	Gend i_gender =MALE;
+	u8 i_genderN[10];
+	u8 i_age;
+	u8* i_name = (u8*)malloc(sizeof(u8)*100);
+	
+	
+	printf("Enter new patient Name: ");
+	gets(i_name);
+			
+	printf("Enter new patient ID: ");
+	scanf("%llu",&i_ID);
+	while((getchar()) != '\n');
+	
+	printf("Enter new patient's gender in all small letters: ");
+	scanf("%s",i_genderN);
+	while((getchar()) != '\n');
+	
+	if(cmpS(i_genderN,"male"))
+		i_gender = MALE;
+	else if(cmpS(i_genderN,"female"))
+		i_gender = FEMALE;
+	
+	printf("Enter new patient age: ");
+	scanf("%u",&i_age);
+	while((getchar()) != '\n');
+	
+	if(insertPatientTop(i_ID ,i_name ,i_gender ,i_age)== P_FAILED)
+	{
+		printf("A patient with this ID already exists, could not add the new patient record\n");
+	}
+}
+
 
 void editWindow()
 {
