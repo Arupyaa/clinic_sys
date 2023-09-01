@@ -76,18 +76,28 @@ void printSlot(Slots slot)
 void printAllslots()
 {
 	printf("Reservations for the day:\n");
-	printf("2pm to 2:30pm\t\t2:30pm to 3pm\t\t3pm to 3:30pm\t\t4pm to 4:30pm\t\t4:30pm to 5pm\n");
+	printf("%-*s|%-*s|%-*s|%-*s|%-*s\n",13,"2pm to 2:30pm",13,"2:30pm to 3pm",13,"3pm to 3:30pm",13,"4pm to 4:30pm",13,"4:30pm to 5pm");
 	
 	for(u8 c=0;c<5;c++)
 	{
 		if(T_Slots[c] ==-1)
 		{
-			printf("NONE\t\t");
+			printf("%-*s|",13,"NONE");
 		}
 		else
 		{
-			printf("%llu\t\t",T_Slots[c]);
+			printf("%-*llu|",13,T_Slots[c]);
 		}
 	}
-	printf("\n");
+	//delete the last | printed and end the line
+	printf("\b \b\n");
+}
+
+
+u32 getStrLen(u8* str)
+{
+	u32 c=0;
+	while(str[c]!='\0')
+		c++;
+	return c;
 }

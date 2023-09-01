@@ -313,8 +313,12 @@ void patientMode()
 				printf("Patient of such ID doesn't exist in the system\n");
 			else
 			{
-				printf("Name\tAge\tGender\tID\n");
-				printf("%s\t%d\t%s\t%llu\n",curr->Name,curr->Age,Gender(curr->Gender),curr->ID);
+				//get str length for printing format
+				u32 str_len = getStrLen(curr->Name);
+				
+				printf("%-*s| %-*s| %-*s| %-*s\n",str_len+3,"Name",5,"Age",7,"Gender",15,"ID");
+				
+				printf("%-*s| %-*d| %-*s| %-*llu\n",str_len+3,curr->Name,5,curr->Age,7,Gender(curr->Gender),15,curr->ID);
 			}
 			break;
 			
