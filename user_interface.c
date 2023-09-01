@@ -232,7 +232,12 @@ void editWindow()
 		
 	while(1)
 	{
+		u32 str_len = getStrLen(curr_patient->Name);
+		printf("\n");
+		printf("%-*s|%-*s|%-*s|%-*s\n",str_len+3,"Name",5,"Age",7,"Gender",15,"ID");
 		
+		printf("%-*s|%-*d|%-*s|%-*llu\n",str_len+3,curr_patient->Name,5,curr_patient->Age,7,Gender(curr_patient->Gender),15,curr_patient->ID);
+		printf("\n");
 		
 		printf("Choose patient parameter to edit: \n");
 		printf("1: edit patient name\n");
@@ -339,12 +344,3 @@ void patientMode()
 	}
 }
 
-/*changes to be made:
-remove delete patient func from admin options 
-move add code to its own window func
-add print curr_patient feedback window to editing window
-
-
-changes done:
-add edit window and include delete patient under it
-*/
