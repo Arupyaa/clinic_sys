@@ -6,13 +6,13 @@ void mainWindow()
 	{
 		UserModes USER_STATUS = NONE;
 	
-		printf("Welcome to the clinic\nPlease choose between Admin Mode or User Mode:\n");
+		printf("<<<<<<Welcome to the clinic>>>>>>\n\nPlease choose between Admin Mode or User Mode:\n");
 		
 		u8 modeChoice;
 		printf("Enter 1 for Admin Mode\tEnter 2 for User Mode\tEnter 3 to exit the program\n");
 		
 		
-		
+		printf("Input:");
 		scanf("%u",&modeChoice);
 		while((getchar()) != '\n');
 		
@@ -21,6 +21,7 @@ void mainWindow()
 			printf("Incorrect input, please try again\n");
 			printf("Enter 1 for Admin Mode\tEnter 2 for User Mode\tEnter 3 to exit the program\n");
 			
+			printf("Input:");
 			scanf("%u",&modeChoice);
 			while((getchar()) != '\n');
 			
@@ -80,7 +81,7 @@ AdminStatus adminCheck()
 	
 	for(int c = 0;;c++)
 	{
-		printf("Please enter your admin password: ");
+		printf("Please enter your admin password:");
 		
 		scanf("%[^\n]%*c",uPass);
 		
@@ -127,12 +128,15 @@ void adminMode()
 		Gend i_gender =MALE;
 		u8 i_genderN[10];
 		u8 i_age;
+		printf("\n");
 		printf("Please enter a number for an operation:\n");
 		printf("1:Add new patient record\n");
 		printf("2:Edit an existing patient record\n");
 		printf("3:Reserve a new appointment slot with the doctor\n");
 		printf("4:Cancel an existing appointment with the doctor\n");
 		printf("5:Logout of Admin mode\n");
+		
+		printf("Input:");
 		scanf("%d",&n);
 		while((getchar()) != '\n');
 		
@@ -290,12 +294,14 @@ void patientMode()
 {
 	while(1)
 	{
+		printf("\n");
 		printf("Enter 1 to view patient's records using his ID\n");
 		printf("Enter 2 to view all reservations for today\n");
 		printf("Enter 3 to exit user mode\n");
-		printf("Input: ");
+		printf("Input:");
 		
 		u8 pChoice;
+		
 		scanf("%d",&pChoice);
 		while((getchar()) != '\n');
 		
@@ -315,14 +321,15 @@ void patientMode()
 			{
 				//get str length for printing format
 				u32 str_len = getStrLen(curr->Name);
+				printf("\n");
+				printf("%-*s|%-*s|%-*s|%-*s\n",str_len+3,"Name",5,"Age",7,"Gender",15,"ID");
 				
-				printf("%-*s| %-*s| %-*s| %-*s\n",str_len+3,"Name",5,"Age",7,"Gender",15,"ID");
-				
-				printf("%-*s| %-*d| %-*s| %-*llu\n",str_len+3,curr->Name,5,curr->Age,7,Gender(curr->Gender),15,curr->ID);
+				printf("%-*s|%-*d|%-*s|%-*llu\n",str_len+3,curr->Name,5,curr->Age,7,Gender(curr->Gender),15,curr->ID);
 			}
 			break;
 			
 			case 2:
+			printf("\n");
 			printAllslots();
 			printf("\n");
 			break;
