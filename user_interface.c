@@ -248,14 +248,16 @@ void editWindow()
 		printf("6: exit editing this patient\n");
 		
 		u8 uChoice;
+		printf("Input:");
 		scanf("%u",&uChoice);
 		while((getchar()) != '\n');
 		
 		u8 i_genderN[10];
 		if(uChoice == 6)
 			return;
+		else if(uChoice != 5)
+			printf("Enter new parameter:");
 		
-		printf("Enter new parameter: ");
 		switch(uChoice)
 		{
 			case 1:
