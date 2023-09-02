@@ -63,4 +63,7 @@ patient* findPrevious(u64 ID);
 void printAllPatients();
 
 
+//garbage collection function to clear list after program is done
+void clearList();
+
 #endif //PATIENTS_LIST_H

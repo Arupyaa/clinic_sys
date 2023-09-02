@@ -75,6 +75,17 @@ PStatus deletePatientTop()
 	if(Head ==NULL)
 		return P_FAILED;
 	
+	//check if there's only one element in the list
+	if(Tail == Head)
+	{
+		free(Head->Name);
+		free(Head);
+		Head = NULL;
+		Tail = NULL;
+		return P_SUCCESS;
+	}
+	
+	
 	//delete a patient from the top of the list
 	patient* temp = Head;
 	Head = temp->next;
@@ -187,4 +198,12 @@ void printAllPatients()
 		curr = curr->next;
 	}
 	printf("\n");
+}
+
+
+void clearList()
+{
+	while(Head!=NULL)
+		deletePatientTop();
+	printf("List cleared successfully\n");
 }

@@ -29,11 +29,15 @@ void mainWindow()
 		
 		//terminate program if user entered 3
 		if(modeChoice == 3)
+		{
+			clearList();
 			return;
+		}	
 		
 		//returning 1 means the admin login has failed and the system should shutdown
 		if(modeSet(modeChoice,&USER_STATUS) == 1)
 		{
+			clearList();
 			return;
 		}else if(USER_STATUS == ADMIN)
 		{
