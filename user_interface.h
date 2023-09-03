@@ -33,6 +33,9 @@ void adminMode();
 
 void patientMode();
 
+//runtime window for adding new patient
+void addWindow();
+
 //runtime window for editing patient info
 void editWindow();
 

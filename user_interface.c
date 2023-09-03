@@ -13,7 +13,7 @@ void mainWindow()
 		
 		
 		printf("Input:");
-		scanf("%u",&modeChoice);
+		scanf("%hhu",&modeChoice);
 		while((getchar()) != '\n');
 		
 		while(modeChoice!=1  && modeChoice!=2 && modeChoice!=3)
@@ -22,7 +22,7 @@ void mainWindow()
 			printf("Enter 1 for Admin Mode\tEnter 2 for User Mode\tEnter 3 to exit the program\n");
 			
 			printf("Input:");
-			scanf("%u",&modeChoice);
+			scanf("%hhu",&modeChoice);
 			while((getchar()) != '\n');
 			
 		}
@@ -128,10 +128,6 @@ void adminMode()
 		u8 n;
 		u64 i_ID;
 		
-		
-		Gend i_gender =MALE;
-		u8 i_genderN[10];
-		u8 i_age;
 		printf("\n");
 		printf("Please enter a number for an operation:\n");
 		printf("1:Add new patient record\n");
@@ -141,37 +137,14 @@ void adminMode()
 		printf("5:Logout of Admin mode\n");
 		
 		printf("Input:");
-		scanf("%d",&n);
+		scanf("%hhu",&n);
 		while((getchar()) != '\n');
 		
-		u8* i_name = (u8*)malloc(sizeof(u8)*100);
+		
 		switch(n)
 		{
 			case 1:
-			printf("Enter new patient Name: ");
-			gets(i_name);
-			
-			printf("Enter new patient ID: ");
-			scanf("%llu",&i_ID);
-			while((getchar()) != '\n');
-			
-			printf("Enter new patient's gender in all small letters: ");
-			scanf("%s",i_genderN);
-			while((getchar()) != '\n');
-			
-			if(cmpS(i_genderN,"male"))
-				i_gender = MALE;
-			else if(cmpS(i_genderN,"female"))
-				i_gender = FEMALE;
-			
-			printf("Enter new patient age: ");
-			scanf("%u",&i_age);
-			while((getchar()) != '\n');
-			
-			if(insertPatientTop(i_ID ,i_name ,i_gender ,i_age)== P_FAILED)
-			{
-				printf("A patient with this ID already exists, could not add the new patient record\n");
-			}
+			addWindow();
 			break;
 			
 			case 2:
@@ -183,7 +156,7 @@ void adminMode()
 			printf("Desired timeslot number: ");
 			
 			Slots i_slot;
-			scanf("%u",&i_slot);
+			scanf("%hhu",&i_slot);
 			while((getchar()) != '\n');
 			
 			
@@ -220,6 +193,43 @@ void adminMode()
 	}
 }
 
+void addWindow()
+{
+	u64 i_ID;
+	Gend i_gender =MALE;
+	u8 i_genderN[10];
+	u8 i_age;
+	
+	u8* i_name = (u8*)malloc(sizeof(u8)*100);
+	
+	
+	printf("Enter new patient Name: ");
+	gets(i_name);
+	
+	printf("Enter new patient ID: ");
+	scanf("%llu",&i_ID);
+	while((getchar()) != '\n');
+	
+	printf("Enter new patient's gender in all small letters: ");
+	scanf("%s",i_genderN);
+	while((getchar()) != '\n');
+	
+	if(cmpS(i_genderN,"male"))
+		i_gender = MALE;
+	else if(cmpS(i_genderN,"female"))
+		i_gender = FEMALE;
+	
+	printf("Enter new patient age: ");
+	scanf("%hhu",&i_age);
+	while((getchar()) != '\n');
+	
+	if(insertPatientTop(i_ID ,i_name ,i_gender ,i_age)== P_FAILED)
+	{
+		printf("A patient with this ID already exists, could not add the new patient record\n");
+	}
+}
+
+
 void editWindow()
 {
 	printf("Enter patient's ID you wish to edit: ");
@@ -253,7 +263,7 @@ void editWindow()
 		
 		u8 uChoice;
 		printf("Input:");
-		scanf("%u",&uChoice);
+		scanf("%hhu",&uChoice);
 		while((getchar()) != '\n');
 		
 		u8 i_genderN[10];
@@ -283,7 +293,7 @@ void editWindow()
 			break;
 			
 			case 4:
-			scanf("%u",&curr_patient->Age);
+			scanf("%hhu",&curr_patient->Age);
 			while((getchar()) != '\n');
 			break;
 			
