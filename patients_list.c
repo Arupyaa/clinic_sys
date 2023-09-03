@@ -4,7 +4,7 @@
 patient* Head = NULL;
 patient* Tail = NULL;
 
-patient* createPatient(u64 ID,u8* Name, Gend Gender, u8 Age)
+patient* createPatient(u64 ID,u8* Name, Gend Gender, u32 Age)
 {
 	//create a new patient obj, fill his elements and return a pointer to it
 	patient* newPatient = (patient*)malloc(sizeof(patient));
@@ -18,7 +18,7 @@ patient* createPatient(u64 ID,u8* Name, Gend Gender, u8 Age)
 }
 
 
-PStatus insertPatientTop(u64 ID,u8* Name, Gend Gender, u8 Age)
+PStatus insertPatientTop(u64 ID,u8* Name, Gend Gender, u32 Age)
 {
 
 	//check if the ID of the new patient already exists, if it does don't add him and return a failed status message
@@ -45,7 +45,7 @@ PStatus insertPatientTop(u64 ID,u8* Name, Gend Gender, u8 Age)
 }
 
 
-PStatus insertPatientBottom(u64 ID,u8* Name, Gend Gender, u8 Age)
+PStatus insertPatientBottom(u64 ID,u8* Name, Gend Gender, u32 Age)
 {
 	//check if the ID of the new patient already exists, if it does don't add him and return a failed status message
 	if(checkWID(ID)!=NULL)
@@ -74,6 +74,17 @@ PStatus deletePatientTop()
 	//check if the list is empty
 	if(Head ==NULL)
 		return P_FAILED;
+	
+	//check if there's only one element in the list
+	if(Tail == Head)
+	{
+		free(Head->Name);
+		free(Head);
+		Head = NULL;
+		Tail = NULL;
+		return P_SUCCESS;
+	}
+	
 	
 	//delete a patient from the top of the list
 	patient* temp = Head;
@@ -187,4 +198,12 @@ void printAllPatients()
 		curr = curr->next;
 	}
 	printf("\n");
+}
+
+
+void clearList()
+{
+	while(Head!=NULL)
+		deletePatientTop();
+	//printf("List cleared successfully\n");
 }

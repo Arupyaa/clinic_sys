@@ -13,8 +13,6 @@ int main()
 	
 	mainWindow();
 	
-	printAllPatients();
-	
 	
 	
 	//reserveSlot(TWO_THIRTY,52353273);

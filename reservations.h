@@ -25,4 +25,7 @@ void printSlot(Slots slot);
 //func to print all reservations
 void printAllslots();
 
+//utility func to get string len for print purposes
+u32 getStrLen(u8* str);
+
 #endif //RESERVATIONS_H
