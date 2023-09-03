@@ -197,7 +197,6 @@ void adminMode()
 			break;
 		}
 		
-		printf("exited successfully from switch\n");
 		
 	}
 }
