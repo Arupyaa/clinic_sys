@@ -205,5 +205,5 @@ void clearList()
 {
 	while(Head!=NULL)
 		deletePatientTop();
-	printf("List cleared successfully\n");
+	//printf("List cleared successfully\n");
 }

@@ -13,7 +13,7 @@ void mainWindow()
 		
 		
 		printf("Input:");
-		scanf("%hhu",&modeChoice);
+		scanf("%u",&modeChoice);
 		while((getchar()) != '\n');
 		
 		while(modeChoice!=1  && modeChoice!=2 && modeChoice!=3)
@@ -22,7 +22,7 @@ void mainWindow()
 			printf("Enter 1 for Admin Mode\tEnter 2 for User Mode\tEnter 3 to exit the program\n");
 			
 			printf("Input:");
-			scanf("%hhu",&modeChoice);
+			scanf("%u",&modeChoice);
 			while((getchar()) != '\n');
 			
 		}
@@ -137,7 +137,7 @@ void adminMode()
 		printf("5:Logout of Admin mode\n");
 		
 		printf("Input:");
-		scanf("%hhu",&n);
+		scanf("%u",&n);
 		while((getchar()) != '\n');
 		
 		
@@ -156,7 +156,7 @@ void adminMode()
 			printf("Desired timeslot number: ");
 			
 			Slots i_slot;
-			scanf("%hhu",&i_slot);
+			scanf("%u",&i_slot);
 			while((getchar()) != '\n');
 			
 			
@@ -168,7 +168,8 @@ void adminMode()
 			
 			if(reserveSlot(i_slot,i_ID) == R_FAILED)
 				printf("Couldn't make reservation\n");
-			
+			else
+				printf("Reservation made successfully\n");
 			break;
 			
 			case 4:
@@ -220,7 +221,7 @@ void addWindow()
 		i_gender = FEMALE;
 	
 	printf("Enter new patient age: ");
-	scanf("%hhu",&i_age);
+	scanf("%u",&i_age);
 	while((getchar()) != '\n');
 	
 	if(insertPatientTop(i_ID ,i_name ,i_gender ,i_age)== P_FAILED)
@@ -263,7 +264,7 @@ void editWindow()
 		
 		u32 uChoice;
 		printf("Input:");
-		scanf("%hhu",&uChoice);
+		scanf("%u",&uChoice);
 		while((getchar()) != '\n');
 		
 		u8 i_genderN[10];
@@ -293,7 +294,7 @@ void editWindow()
 			break;
 			
 			case 4:
-			scanf("%hhu",&curr_patient->Age);
+			scanf("%u",&curr_patient->Age);
 			while((getchar()) != '\n');
 			break;
 			
