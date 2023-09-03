@@ -15,7 +15,7 @@ struct Patient
 	u64 ID;
 	u8* Name;
 	Gend Gender;
-	u8 Age;
+	u32 Age;
 	
 	patient* next;
 	
@@ -27,17 +27,17 @@ struct Patient
 
 
 //func to create a new patient and return a pointer to its obj
-patient* createPatient(u64 ID,u8* Name, Gend Gender, u8 Age);
+patient* createPatient(u64 ID,u8* Name, Gend Gender, u32 Age);
 
 //Status messages indicating if the patient function succeeded or failed
 enum PStatus{P_SUCCESS=1,P_FAILED=-1};
 typedef enum PStatus PStatus;
 
 //func to add a patient with a new unique ID to the start of the list 
-PStatus insertPatientTop(u64 ID,u8* Name, Gend Gender, u8 Age);
+PStatus insertPatientTop(u64 ID,u8* Name, Gend Gender, u32 Age);
 
 //func to add a patient with a new unique ID to the end of the list
-PStatus insertPatientBottom(u64 ID,u8* Name, Gend Gender, u8 Age);
+PStatus insertPatientBottom(u64 ID,u8* Name, Gend Gender, u32 Age);
 
 
 //func to delete a patient from start of the list

@@ -8,7 +8,7 @@ void mainWindow()
 	
 		printf("<<<<<<Welcome to the clinic>>>>>>\n\nPlease choose between Admin Mode or User Mode:\n");
 		
-		u8 modeChoice;
+		u32 modeChoice;
 		printf("Enter 1 for Admin Mode\tEnter 2 for User Mode\tEnter 3 to exit the program\n");
 		
 		
@@ -52,7 +52,7 @@ void mainWindow()
 }
 
 
-u8 modeSet(u8 mode,UserModes* USER_STATUS)
+u32 modeSet(u32 mode,UserModes* USER_STATUS)
 {
 	if(mode==1)
 	{
@@ -106,7 +106,7 @@ AdminStatus adminCheck()
 }
 
 
-u8 cmpS(const u8* str1,const u8* str2)
+u32 cmpS(const u8* str1,const u8* str2)
 {
 	//loops until both str1 and str2 are finished
 	for(int c = 0;str1[c] != '\0' || str2[c] != '\0';c++)
@@ -125,7 +125,7 @@ void adminMode()
 {
 	while(1)
 	{
-		u8 n;
+		u32 n;
 		u64 i_ID;
 		
 		printf("\n");
@@ -198,7 +198,7 @@ void addWindow()
 	u64 i_ID;
 	Gend i_gender =MALE;
 	u8 i_genderN[10];
-	u8 i_age;
+	u32 i_age;
 	
 	u8* i_name = (u8*)malloc(sizeof(u8)*100);
 	
@@ -261,7 +261,7 @@ void editWindow()
 		printf("5: delete patient from records\n");
 		printf("6: exit editing this patient\n");
 		
-		u8 uChoice;
+		u32 uChoice;
 		printf("Input:");
 		scanf("%hhu",&uChoice);
 		while((getchar()) != '\n');
@@ -321,7 +321,7 @@ void patientMode()
 		printf("Enter 3 to exit user mode\n");
 		printf("Input:");
 		
-		u8 pChoice;
+		u32 pChoice;
 		
 		scanf("%d",&pChoice);
 		while((getchar()) != '\n');
